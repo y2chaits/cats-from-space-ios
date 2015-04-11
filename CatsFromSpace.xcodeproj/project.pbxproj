@@ -14,6 +14,7 @@
 		57C627841AD9AA78003B3AF7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C627831AD9AA78003B3AF7 /* Images.xcassets */; };
 		57C627871AD9AA78003B3AF7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C627851AD9AA78003B3AF7 /* LaunchScreen.xib */; };
 		57C627931AD9AA78003B3AF7 /* CatsFromSpaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C627921AD9AA78003B3AF7 /* CatsFromSpaceTests.m */; };
+		57C6279E1AD9AC97003B3AF7 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 57C6279D1AD9AC97003B3AF7 /* ArcGIS.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		57C6278C1AD9AA78003B3AF7 /* CatsFromSpaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatsFromSpaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C627911AD9AA78003B3AF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57C627921AD9AA78003B3AF7 /* CatsFromSpaceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatsFromSpaceTests.m; sourceTree = "<group>"; };
+		57C6279D1AD9AC97003B3AF7 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = ../../../Library/SDKs/ArcGIS/iOS/ArcGIS.framework/Versions/Current/Resources/ArcGIS.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		57C6276A1AD9AA78003B3AF7 = {
 			isa = PBXGroup;
 			children = (
+				57C6279C1AD9AC63003B3AF7 /* Resources */,
 				57C627751AD9AA78003B3AF7 /* CatsFromSpace */,
 				57C6278F1AD9AA78003B3AF7 /* CatsFromSpaceTests */,
 				57C627741AD9AA78003B3AF7 /* Products */,
@@ -117,6 +120,14 @@
 				57C627911AD9AA78003B3AF7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		57C6279C1AD9AC63003B3AF7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				57C6279D1AD9AC97003B3AF7 /* ArcGIS.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 			files = (
 				57C627821AD9AA78003B3AF7 /* Main.storyboard in Resources */,
 				57C627871AD9AA78003B3AF7 /* LaunchScreen.xib in Resources */,
+				57C6279E1AD9AC97003B3AF7 /* ArcGIS.bundle in Resources */,
 				57C627841AD9AA78003B3AF7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,8 +357,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
 				INFOPLIST_FILE = CatsFromSpace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -355,8 +375,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/**";
 				INFOPLIST_FILE = CatsFromSpace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -414,6 +442,7 @@
 				57C627981AD9AA78003B3AF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		57C627991AD9AA78003B3AF7 /* Build configuration list for PBXNativeTarget "CatsFromSpaceTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +451,7 @@
 				57C6279B1AD9AA78003B3AF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

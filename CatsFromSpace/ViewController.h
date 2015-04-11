@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ArcGIS/ArcGIS.h>
 
-@interface ViewController : UIViewController
+
+@interface ViewController : UIViewController <AGSMapViewLayerDelegate>
 
 
 @end
