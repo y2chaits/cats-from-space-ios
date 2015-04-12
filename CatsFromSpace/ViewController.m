@@ -11,6 +11,7 @@
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet AGSMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIButton *currentLocationBtn;
 
 @end
 
@@ -25,6 +26,7 @@
     [self.mapView addMapLayer:layer withName:@"Modis Tiled Layer"];
 
     self.mapView.layerDelegate = self;
+    self.mapView.touchDelegate = self;
 
 }
 
@@ -32,8 +34,41 @@
     //do something now that the map is loaded
     //for example, show the current location on the map
     [mapView.locationDisplay startDataSource];
+
+    //
+    AGSSpatialReference *sr = [self.mapView spatialReference];
+    AGSEnvelope *env = [AGSEnvelope envelopeWithXmin:-123.4167
+                                                ymin:36.7833
+                                                xmax:-121.4167
+                                                ymax:38.7833
+                                    spatialReference:sr];
+
+    NSLog(@"%@", env);
+
+    [self.mapView zoomToEnvelope:env animated:YES];
+
 }
 
+- (IBAction)currentLocationBtnPressed:(id)sender {
+
+//    NSLog(@"%@", self.mapView.visibleAreaEnvelope);
+
+    AGSSpatialReference *sr = [self.mapView spatialReference];
+
+    double x = self.mapView.locationDisplay.location.point.x;
+    double y = self.mapView.locationDisplay.location.point.y;
+
+    AGSEnvelope *env = [AGSEnvelope envelopeWithXmin:x - 1
+                                                ymin:y - 1
+                                                xmax:x + 1
+                                                ymax:y + 1
+                                    spatialReference:sr];
+
+    NSLog(@"%@", env);
+
+    [self.mapView zoomToEnvelope:env animated:YES];
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
