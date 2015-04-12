@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		575ACED11ADAF3B300CF66B2 /* SSClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 575ACED01ADAF3B300CF66B2 /* SSClient.m */; };
 		57C627791AD9AA78003B3AF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C627781AD9AA78003B3AF7 /* main.m */; };
 		57C6277C1AD9AA78003B3AF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C6277B1AD9AA78003B3AF7 /* AppDelegate.m */; };
 		57C6277F1AD9AA78003B3AF7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C6277E1AD9AA78003B3AF7 /* ViewController.m */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		575ACECF1ADAF3B300CF66B2 /* SSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSClient.h; sourceTree = "<group>"; };
+		575ACED01ADAF3B300CF66B2 /* SSClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSClient.m; sourceTree = "<group>"; };
 		57C627731AD9AA78003B3AF7 /* CatsFromSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatsFromSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C627771AD9AA78003B3AF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57C627781AD9AA78003B3AF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,6 +104,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		575ACED21ADAF3C900CF66B2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				57C627801AD9AA78003B3AF7 /* Main.storyboard */,
+				57C627831AD9AA78003B3AF7 /* Images.xcassets */,
+				57C627851AD9AA78003B3AF7 /* LaunchScreen.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		57C6276A1AD9AA78003B3AF7 = {
 			isa = PBXGroup;
 			children = (
@@ -127,9 +140,9 @@
 				57C6277B1AD9AA78003B3AF7 /* AppDelegate.m */,
 				57C6277D1AD9AA78003B3AF7 /* ViewController.h */,
 				57C6277E1AD9AA78003B3AF7 /* ViewController.m */,
-				57C627801AD9AA78003B3AF7 /* Main.storyboard */,
-				57C627831AD9AA78003B3AF7 /* Images.xcassets */,
-				57C627851AD9AA78003B3AF7 /* LaunchScreen.xib */,
+				575ACECF1ADAF3B300CF66B2 /* SSClient.h */,
+				575ACED01ADAF3B300CF66B2 /* SSClient.m */,
+				575ACED21ADAF3C900CF66B2 /* Resources */,
 				57C627761AD9AA78003B3AF7 /* Supporting Files */,
 			);
 			path = CatsFromSpace;
@@ -285,6 +298,7 @@
 			files = (
 				57C6277F1AD9AA78003B3AF7 /* ViewController.m in Sources */,
 				57C6277C1AD9AA78003B3AF7 /* AppDelegate.m in Sources */,
+				575ACED11ADAF3B300CF66B2 /* SSClient.m in Sources */,
 				57C627791AD9AA78003B3AF7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

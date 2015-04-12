@@ -7,12 +7,12 @@
 //
 
 #import "ViewController.h"
-#import <GoogleMaps/GoogleMaps.h>
-
+#import "SSClient.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) GMSMapView *mapView;
+@property (nonatomic, strong) GMSMarker *marker;
 
 @end
 
@@ -29,7 +29,11 @@
                                                                  zoom:5];
     self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     self.mapView.myLocationEnabled = YES;
-    self.view = self.mapView;
+    self.mapView.settings.myLocationButton = YES;
+    self.mapView.delegate = self;
+
+    self.mapView.mapType = kGMSTypeHybrid;
+
 
     // Creates a marker in the center of the map.
     GMSMarker *marker = [[GMSMarker alloc] init];
@@ -38,28 +42,98 @@
     marker.snippet = @"USA";
     marker.map = self.mapView;
 
-    [self.mapView setMinZoom:1 maxZoom:8];
+//    [self.mapView setMinZoom:1 maxZoom:8];
 
 
     // Implement GMSTileURLConstructor
     // Returns a Tile based on the x,y,zoom coordinates, and the requested floor
-    GMSTileURLConstructor urls = ^(NSUInteger x, NSUInteger y, NSUInteger zoom) {
+//    GMSTileURLConstructor urls = ^(NSUInteger x, NSUInteger y, NSUInteger zoom) {
+//
+//        NSString *url = [NSString stringWithFormat:@"http://map1.vis.earthdata.nasa.gov/wmts-geo/MODIS_Terra_CorrectedReflectance_TrueColor/default/2015-04-08/EPSG4326_250m/%ld/%ld/%ld.jpeg", zoom, y, x];
+//
+//
+//        NSLog(@"%@",url);
+//
+//        return [NSURL URLWithString:url];
+//    };
+//
+//    // Create the GMSTileLayer
+//    GMSURLTileLayer *layer = [GMSURLTileLayer tileLayerWithURLConstructor:urls];
+//
+//    // Display on the map at a specific zIndex
+//    layer.zIndex = 100;
+//    layer.map = self.mapView;
 
-        NSString *url = [NSString stringWithFormat:@"http://map1.vis.earthdata.nasa.gov/wmts-geo/MODIS_Terra_CorrectedReflectance_TrueColor/default/2015-04-08/EPSG4326_250m/%ld/%ld/%ld.jpeg", zoom, y, x];
 
-
-        NSLog(@"%@",url);
-
-        return [NSURL URLWithString:url];
-    };
-
-    // Create the GMSTileLayer
-    GMSURLTileLayer *layer = [GMSURLTileLayer tileLayerWithURLConstructor:urls];
-
-    // Display on the map at a specific zIndex
-    layer.zIndex = 100;
-    layer.map = self.mapView;
+    self.view = self.mapView;
 }
+
+-(void) mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{
+
+    if (!self.marker) {
+        self.marker = [[GMSMarker alloc] init];
+    }
+
+    self.marker.position = coordinate;
+    self.marker.title = @"Tap here to add tags";
+    self.marker.draggable = YES;
+    self.marker.appearAnimation = kGMSMarkerAnimationPop;
+    self.marker.map = self.mapView;
+    
+}
+
+- (BOOL) mapView: 		(GMSMapView *)  	mapView
+    didTapMarker: 		(GMSMarker *)  	marker
+{
+    if (marker == self.marker) {
+        UIAlertView* dialog = [[UIAlertView alloc] initWithTitle:@"Enter tag \n"
+                                                         message:nil
+                                                        delegate:self
+                                               cancelButtonTitle:@"Cancel"
+                                               otherButtonTitles:@"Upload", nil];
+
+        dialog.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [dialog show];
+        return YES;
+    }
+
+
+
+    return NO;
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;
+{
+    if (buttonIndex != [alertView cancelButtonIndex]) {
+        UITextField *textfield =  [alertView textFieldAtIndex: 0];
+        [SSClient submitTag:textfield.text lat:self.marker.position.latitude lon:self.marker.position.longitude zoom:(int) self.mapView.camera.zoom];
+    }
+}
+
+- (void) mapView: 		(GMSMapView *)  	mapView
+didBeginDraggingMarker: 		(GMSMarker *)  	marker
+{
+
+}
+
+- (void) mapView: 		(GMSMapView *)  	mapView
+didEndDraggingMarker: 		(GMSMarker *)  	marker
+{
+
+}
+
+- (void) mapView: 		(GMSMapView *)  	mapView
+   didDragMarker: 		(GMSMarker *)  	marker
+{
+
+}
+
+- (BOOL) didTapMyLocationButtonForMapView: 		(GMSMapView *)  	mapView
+{
+    return NO;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
