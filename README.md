@@ -10,7 +10,10 @@ We need you to develop an app to crowdsource the discovery of “interesting” 
 
 ## Resources
 Challenge Page: https://2015.spaceappschallenge.org/challenge/volcanoes-icebergs-and-cats-space/
+
 Project Page: https://2015.spaceappschallenge.org/project/cats-from-space/
+
 Web App Repo: https://github.com/aroundthesea/cats-from-space
+
 Deployed Web App: http://space-cat.herokuapp.com/
 
