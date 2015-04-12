@@ -107,7 +107,60 @@
     if (buttonIndex != [alertView cancelButtonIndex]) {
         UITextField *textfield =  [alertView textFieldAtIndex: 0];
         [SSClient submitTag:textfield.text lat:self.marker.position.latitude lon:self.marker.position.longitude zoom:(int) self.mapView.camera.zoom];
+
+        // take screenshot
+        UIGraphicsBeginImageContext(self.mapView.frame.size);
+        [self.mapView.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *screenShotImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        CGSize newSize = CGSizeMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2);
+        UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+        [screenShotImage drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+
+        UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:smallImage];
+
+        CustomIOSAlertView *alertView = [[CustomIOSAlertView alloc] init];
+        [alertView setContainerView:imageView];
+
+        [alertView setButtonTitles:[NSMutableArray arrayWithObjects:@"Share", @"Close", nil]];
+        alertView.delegate = self;
+        
+        [alertView show];
     }
+}
+
+- (void) customIOS7dialogButtonTouchUpInside: (CustomIOSAlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [alertView close];
+
+        // Share button
+        [self shareText:@"Look what I found on #CatsFromSpace" andImage:((UIImageView *)alertView.containerView).image andUrl:nil];
+    } else {
+        [alertView close];
+    }
+}
+
+- (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url
+{
+    NSMutableArray *sharingItems = [NSMutableArray new];
+
+    if (text) {
+        [sharingItems addObject:text];
+    }
+    if (image) {
+        [sharingItems addObject:image];
+    }
+    if (url) {
+        [sharingItems addObject:url];
+    }
+
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
 }
 
 - (void) mapView: 		(GMSMapView *)  	mapView

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		575ACED11ADAF3B300CF66B2 /* SSClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 575ACED01ADAF3B300CF66B2 /* SSClient.m */; };
+		575ACED61ADAFD8E00CF66B2 /* CustomIOSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 575ACED51ADAFD8E00CF66B2 /* CustomIOSAlertView.m */; };
 		57C627791AD9AA78003B3AF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C627781AD9AA78003B3AF7 /* main.m */; };
 		57C6277C1AD9AA78003B3AF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C6277B1AD9AA78003B3AF7 /* AppDelegate.m */; };
 		57C6277F1AD9AA78003B3AF7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C6277E1AD9AA78003B3AF7 /* ViewController.m */; };
@@ -44,6 +45,8 @@
 /* Begin PBXFileReference section */
 		575ACECF1ADAF3B300CF66B2 /* SSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSClient.h; sourceTree = "<group>"; };
 		575ACED01ADAF3B300CF66B2 /* SSClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSClient.m; sourceTree = "<group>"; };
+		575ACED41ADAFD8E00CF66B2 /* CustomIOSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOSAlertView.h; sourceTree = "<group>"; };
+		575ACED51ADAFD8E00CF66B2 /* CustomIOSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOSAlertView.m; sourceTree = "<group>"; };
 		57C627731AD9AA78003B3AF7 /* CatsFromSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatsFromSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C627771AD9AA78003B3AF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57C627781AD9AA78003B3AF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -114,6 +117,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		575ACED31ADAFD8E00CF66B2 /* Deps */ = {
+			isa = PBXGroup;
+			children = (
+				575ACED41ADAFD8E00CF66B2 /* CustomIOSAlertView.h */,
+				575ACED51ADAFD8E00CF66B2 /* CustomIOSAlertView.m */,
+			);
+			path = Deps;
+			sourceTree = "<group>";
+		};
 		57C6276A1AD9AA78003B3AF7 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +147,7 @@
 		57C627751AD9AA78003B3AF7 /* CatsFromSpace */ = {
 			isa = PBXGroup;
 			children = (
+				575ACED31ADAFD8E00CF66B2 /* Deps */,
 				57C627A01AD9DE0E003B3AF7 /* Libs */,
 				57C6277A1AD9AA78003B3AF7 /* AppDelegate.h */,
 				57C6277B1AD9AA78003B3AF7 /* AppDelegate.m */,
@@ -300,6 +313,7 @@
 				57C6277C1AD9AA78003B3AF7 /* AppDelegate.m in Sources */,
 				575ACED11ADAF3B300CF66B2 /* SSClient.m in Sources */,
 				57C627791AD9AA78003B3AF7 /* main.m in Sources */,
+				575ACED61ADAFD8E00CF66B2 /* CustomIOSAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
