@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
+#import "CustomIOSAlertView.h"
 
-@interface ViewController : UIViewController
+
+@interface ViewController : UIViewController <GMSMapViewDelegate, UIAlertViewDelegate, CustomIOSAlertViewDelegate>
 
 
 @end
