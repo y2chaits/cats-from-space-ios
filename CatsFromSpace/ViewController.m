@@ -8,11 +8,13 @@
 
 #import "ViewController.h"
 #import "SSClient.h"
+#import "CoreLocation/CLGeocoder.h"
 
 @interface ViewController ()
 
-@property (nonatomic, strong) GMSMapView *mapView;
+@property (nonatomic, strong) IBOutlet GMSMapView *mapView;
 @property (nonatomic, strong) GMSMarker *marker;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -65,7 +67,7 @@
 //    layer.map = self.mapView;
 
 
-    self.view = self.mapView;
+//    self.view = self.mapView;
 }
 
 -(void) mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{
@@ -184,6 +186,37 @@ didEndDraggingMarker: 		(GMSMarker *)  	marker
 - (BOOL) didTapMyLocationButtonForMapView: 		(GMSMapView *)  	mapView
 {
     return NO;
+}
+
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+
+    //Hide the keyboard
+    [searchBar resignFirstResponder];
+
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:searchBar.text
+                 completionHandler:^(NSArray* placemarks, NSError* error){
+                     if (placemarks && placemarks.count > 0) {
+                         CLPlacemark* aPlacemark = placemarks[0];
+
+                         GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:aPlacemark.location.coordinate.latitude
+                                                                                 longitude:aPlacemark.location.coordinate.longitude
+                                                                                      zoom:8];
+                         [self.mapView animateToCameraPosition:camera];
+
+                     } else {
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Results"
+                                                                         message:@"No Results Found"
+                                                                        delegate:nil
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil];
+                         
+                         [alert show];
+                     }
+                 }];
+
+
 }
 
 

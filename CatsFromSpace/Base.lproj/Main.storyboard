@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,8 +17,38 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="EWR-bJ-jT6">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="YVK-PU-ycb"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="KWM-Lj-dhD"/>
+                                </connections>
+                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jv8-Aw-Tf2" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jv8-Aw-Tf2" firstAttribute="top" secondItem="EWR-bJ-jT6" secondAttribute="bottom" id="2Ut-kk-I65"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EWR-bJ-jT6" secondAttribute="trailing" constant="-16" id="5rh-8j-wpl"/>
+                            <constraint firstItem="Jv8-Aw-Tf2" firstAttribute="top" secondItem="EWR-bJ-jT6" secondAttribute="bottom" id="Dw1-Ow-myF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jv8-Aw-Tf2" secondAttribute="trailing" constant="-16" id="Kce-jd-j4o"/>
+                            <constraint firstItem="EWR-bJ-jT6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ejx-Fa-ggr"/>
+                            <constraint firstItem="EWR-bJ-jT6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="hUI-eX-LO5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Jv8-Aw-Tf2" secondAttribute="bottom" id="qXG-UG-Hdg"/>
+                            <constraint firstItem="Jv8-Aw-Tf2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="sFE-ev-srX"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="Jv8-Aw-Tf2" id="3bc-G5-IvW"/>
+                        <outlet property="searchBar" destination="EWR-bJ-jT6" id="fFY-5C-k8P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
