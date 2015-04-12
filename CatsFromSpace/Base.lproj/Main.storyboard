@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dBc-HS-RJe" customClass="AGSMapView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktj-3C-YlN">
-                                <rect key="frame" x="552" y="568" width="22" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktj-3C-YlN">
+                                <rect key="frame" x="544" y="560" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="4zE-0z-TAN"/>
                                     <constraint firstAttribute="height" constant="30" id="eiu-zR-tgy"/>
@@ -35,15 +35,26 @@
                                     <action selector="currentLocationBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mnF-oZ-6f7"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bVz-QB-Suz">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="a3N-UW-HXV"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="bVz-QB-Suz" secondAttribute="trailing" constant="-16" id="8OF-oz-kO2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dBc-HS-RJe" secondAttribute="bottom" id="DB9-p0-dhK"/>
-                            <constraint firstItem="dBc-HS-RJe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Shj-LK-qYQ"/>
+                            <constraint firstItem="dBc-HS-RJe" firstAttribute="top" secondItem="bVz-QB-Suz" secondAttribute="bottom" id="P3w-Fk-Hyo"/>
+                            <constraint firstItem="dBc-HS-RJe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="44" id="Shj-LK-qYQ"/>
                             <constraint firstItem="dBc-HS-RJe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="TRg-ym-3Mu"/>
+                            <constraint firstItem="bVz-QB-Suz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="YVt-Em-Qe2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dBc-HS-RJe" secondAttribute="trailing" constant="-16" id="cyb-wb-mJ1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ktj-3C-YlN" secondAttribute="bottom" constant="10" id="gKP-CM-f18"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ktj-3C-YlN" secondAttribute="trailing" constant="10" id="rjt-N5-eb6"/>
+                            <constraint firstItem="bVz-QB-Suz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="x68-GO-erm"/>
                         </constraints>
                     </view>
                     <connections>

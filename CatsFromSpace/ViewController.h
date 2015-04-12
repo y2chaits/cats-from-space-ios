@@ -10,7 +10,7 @@
 #import <ArcGIS/ArcGIS.h>
 
 
-@interface ViewController : UIViewController <AGSMapViewLayerDelegate, AGSMapViewTouchDelegate>
+@interface ViewController : UIViewController <AGSMapViewLayerDelegate, AGSMapViewTouchDelegate, UISearchBarDelegate, AGSLocatorDelegate>
 
 
 @end
